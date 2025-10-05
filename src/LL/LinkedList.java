@@ -137,6 +137,122 @@ length++;
         }
     }
 
+                     /* InterView Question*/
+    public void reverseBetween(int startIndex,int endIndex){
+        if(head==null){return;}
+        Node dummy = new Node(0);
+        dummy.next=head;
+        Node prev= dummy;
+        Node current;
+        for(int i=0;i<startIndex;i++){
+            prev=prev.next;
+        }
+        System.out.println("Prev Value: " +prev.value);
+        current=prev.next;
+        for(int i=0;i<(endIndex-startIndex);i++){
+            Node nodeToMove = current.next;
+            current.next=nodeToMove.next;
+            nodeToMove.next=prev.next;
+            prev.next=nodeToMove;
+        }
+        head=dummy.next;
+    }
+    public void partitionList(int x){
+        if(head==null){return;}
+        Node dummy1=new Node(0);
+        Node dummy2=new Node(0);
+        Node curr1=dummy1;
+        Node curr2=dummy2;
+        Node curr=head;
+        while(curr!=null){
+            if(curr.value<x){
+                curr1.next=curr;
+                curr1=curr;
+            } else if(curr.value>=x){
+                curr2.next=curr;
+                curr2=curr;
+            }
+            curr=curr.next;
+        }
+        curr2.next=null;
+        curr1.next=dummy2.next;
+        head=dummy1.next;
+    }
 
-}
+    public int binaryToDecimal(){
+        Node curr=head;
+        int sum=0;
+        while(curr!=null){
+            sum=sum*2+curr.value;
+            curr=curr.next;
+        }
+        return sum;
+    }
+    public void removeDuplicates(){   //Right Now it is O(n^2) with HashMap it can found with O(n) when learning HashMap efficiently I will use that one
+        if(head==null){return;}
+        Node curr=head;
+        Node checker;
+        while(curr!=null){
+            checker=curr;
+            while(checker.next!=null){
+                if(checker.next.value==curr.value){
+                    checker.next = checker.next.next;
+                    length--;
+                }else{
+                    checker=checker.next;
+                }
+            }
+            curr=curr.next;
+        }
+    }
+
+    public Node findKthFromEnd(int k) {
+        if (k < 0) {
+            return null;
+        }
+        Node fast = head;
+        Node slow = head;
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                return null;
+            }
+            fast = fast.next;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        return slow;
+    }
+
+    public boolean hasLoop(){
+        Node fast=head;
+        Node slow=head;
+
+        while((fast!=null && fast.next!=null)){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(fast==slow) return true;
+        }
+        return false;
+    }
+
+    public Node findMiddleNode(){
+        if(head==null){return null;}
+        Node slow = head;
+        Node fast = head;
+
+        while(fast!=null && fast.next !=null ){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+
+    }
+
+
+
+
+    }
 
