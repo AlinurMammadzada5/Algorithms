@@ -251,6 +251,30 @@ length++;
 
     }
 
+    public void swapPairs() {
+        if(head==null) return;
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node prev = dummy;
+        Node first = prev.next;
+        // Node second = first.next;   if we do this and inside while when we do second=first.next sometimes we can have first as null, and first.next will be null pointer exception
+        //so it is best to create node second inside while loop
+
+        while(first!=null && first.next !=null){
+            Node second = first.next;
+
+            prev.next = second;
+            first.next = second.next;
+            second.next = first;
+
+
+            prev=first;
+            //   second = first.next;
+            first = prev.next;
+        }
+        head = dummy.next;
+    }
+
 
 
 
