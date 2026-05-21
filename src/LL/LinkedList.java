@@ -137,7 +137,29 @@ length++;
         }
     }
 
-                     /* InterView Question*/
+    public void reverseBetweenSE(int startIndex, int endIndex){
+        if(startIndex>= endIndex || startIndex>=length || endIndex>=length){return;}
+        if(head == null){return;}
+        Node dummyHead = new Node(0);
+        dummyHead.next = head;
+        Node curr;
+        Node pre = dummyHead;
+
+        for(int i =0;i<startIndex;i++){
+           pre = pre.next;
+        }
+        curr = pre.next;
+
+        for(int i =0; i<endIndex-startIndex;i++){
+            Node nodeToMove = curr.next;
+            curr.next = nodeToMove.next;
+            pre.next = nodeToMove;
+            nodeToMove.next = pre.next;
+        }
+
+    }
+
+    /* InterView Question*/
     public void reverseBetween(int startIndex,int endIndex){
         if(head==null){return;}
         Node dummy = new Node(0);
@@ -250,6 +272,32 @@ length++;
         return slow;
 
     }
+
+    public void swapPairs1(){
+        if(head == null){return;}
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node prev = dummy;
+        Node first = prev.next;
+
+        while(first != null && first.next != null){
+            Node second = first.next;
+
+            prev.next = second;
+            first.next = second.next;
+            second.next = first;
+
+
+            first = first.next;
+            prev = second.next;
+
+        }
+
+        head = dummy.next;
+
+
+    }
+
 
     public void swapPairs() {
         if(head==null) return;

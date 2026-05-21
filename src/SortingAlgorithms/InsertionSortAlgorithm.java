@@ -20,4 +20,7 @@ public class InsertionSortAlgorithm {
         System.out.println("Insertion Sort operations: "+operations);
         System.out.println("Sorted Array: "+ Arrays.toString(arr));
     }
+
+
+
 }

@@ -39,9 +39,9 @@ public class InterviewQuestion {
     }
 
     public static Character firstNonRepeatingChar(String s) {
-        HashMap<Character, Integer> myHash = new HashMap<>();
+        HashMap<Character, Integer> myHash = new LinkedHashMap<>();
         if (s.isEmpty() || s.equals(" ")) {
-            return ' ';
+            return '-';
         }
 
         for (int i = 0; i < s.length(); i++) {
@@ -54,13 +54,7 @@ public class InterviewQuestion {
             }
         }
 
-//        for(Map.Entry<Character,Integer> entry : myHash.entrySet()){
-//            System.out.println(entry.getKey()+" - "+entry.getValue());
-//            if(entry.getValue() == 1){
-//                return entry.getKey();
-//            }
-//        }
-        return ' ';
+        return '-';
     }
 
     public static List<List<String>> groupAnagrams(String[] strings) {
